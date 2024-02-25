@@ -1,0 +1,45 @@
+Python 3.11.8 (tags/v3.11.8:db85d51, Feb  6 2024, 22:03:32) [MSC v.1937 64 bit (AMD64)]
+Type 'copyright', 'credits' or 'license' for more information
+IPython 8.21.0 -- An enhanced Interactive Python. Type '?' for help.
+
+In [1]: from main.models import Item,ToDoList
+
+In [2]: t = ToDoList(name = "Tim\'s List"
+   ...: )
+
+In [3]: t.save()
+
+In [4]: ToDoList.objects.all()
+Out[4]: <QuerySet [<ToDoList: Tim's List>]>
+
+In [5]: ToDoList.objects.get(id=1)
+Out[5]: <ToDoList: Tim's List>
+
+In [6]: ToDoList.onjects.get(name="Tim's List")
+---------------------------------------------------------------------------
+AttributeError                            Traceback (most recent call last)
+Cell In[6], line 1
+----> 1 ToDoList.onjects.get(name="Tim's List")
+
+AttributeError: type object 'ToDoList' has no attribute 'onjects'
+
+In [7]: ToDoList.objects.get(name="Tim's List")
+Out[7]: <ToDoList: Tim's List>
+
+In [8]: t.item_set.all()
+Out[8]: <QuerySet []>
+
+In [9]: t
+Out[9]: <ToDoList: Tim's List>
+
+In [10]: t.item_set.all(
+    ...: )
+Out[10]: <QuerySet []>
+
+In [11]: t.item_set.create(text="Go to the mall",complete=False)
+Out[11]: <Item: Go to the mall>
+
+In [12]: t.item_set.all()
+Out[12]: <QuerySet [<Item: Go to the mall>]>
+
+In [13]:
